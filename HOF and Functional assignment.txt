@@ -1,0 +1,133 @@
+1).
+
+const calculateTotalPrice = (orders) => {
+  let totalPrice = 0;
+  orders.forEach(order => {
+    totalPrice += order.price;
+  });
+  return totalPrice;
+};
+
+
+const ordersList = [
+  { name: "Laptop", price: 120000 },
+  { name: "Mobile", price: 70000 },
+  { name: "Mobile Charger", price: 1500 },
+  { name: "Laptop Charger", price: 10500 }
+];
+
+console.log("Total Price:", calculateTotalPrice(ordersList));
+
+2).
+
+const printRandomNumber = () => {
+  setInterval(() => {
+    const randomNumber = Math.random(); // Generates a random number between 0 and 1
+    console.log("Random Number:", randomNumber);
+  }, 2000);
+};
+
+printRandomNumber();
+
+3).
+
+const calculateTaxForExpenses = (expenses) => {
+  const taxRate = 0.1; // 10% tax rate
+  return expenses.map(expense => {
+    const tax = expense.amount * taxRate;
+    return { ...expense, tax: tax };
+  });
+};
+
+// Example usage:
+let expenses = [
+  { amount: 100, category: "Utilities" },
+  { amount: 200, category: "Groceries" },
+  { amount: 50, category: "Entertainment" }
+];
+
+const expensesWithTax = calculateTaxForExpenses(expenses);
+console.log(expensesWithTax);
+
+4).
+
+const filterGroceries = (expenses) => {
+  return expenses.filter(expense => expense.category === "Groceries");
+};
+
+// Example usage:
+let expenses = [
+  { amount: 100, category: "Utilities" },
+  { amount: 200, category: "Groceries" },
+  { amount: 50, category: "Entertainment" }
+];
+
+const groceriesExpenses = filterGroceries(expenses);
+console.log(groceriesExpenses);
+
+5).
+
+const calculateTotalExpenses = (expenses) => {
+  return expenses.reduce((total, expense) => total + expense.amount, 0);
+};
+
+// Example usage:
+let expenses = [
+  { amount: 100, category: "Utilities" },
+  { amount: 200, category: "Groceries" },
+  { amount: 50, category: "Entertainment" }
+];
+
+const totalAmount = calculateTotalExpenses(expenses);
+console.log("Total Amount:", totalAmount);
+
+6).
+
+
+const categorizeExpense = (amount) => {
+  return amount > 100 ? "High Expense" : "Low Expense";
+};
+
+// Example usage:
+let expenses = [
+  { amount: 100, category: "Utilities" },
+  { amount: 200, category: "Groceries" },
+  { amount: 50, category: "Entertainment" }
+];
+
+// Create categorizedExpenses array
+const categorizedExpenses = expenses.map(expense => categorizeExpense(expense.amount));
+
+console.log(categorizedExpenses);
+
+7).
+
+let originalNumbers = [2, 5, 8, 10, 3];
+
+originalNumbers.forEach((num, index, array) => {
+  array[index] = num * 2; // Double each number and update the array
+});
+
+console.log(originalNumbers);
+
+8).
+
+let originalNumbers = [2, 5, 8, 10, 3];
+let evenNumbers = [];
+
+originalNumbers.forEach(num => {
+  if (num % 2 === 0) {
+    evenNumbers.push(num);
+  }
+});
+
+console.log(evenNumbers);
+
+
+
+
+
+
+
+
+
