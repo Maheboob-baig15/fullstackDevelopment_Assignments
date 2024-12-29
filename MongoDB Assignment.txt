@@ -1,0 +1,152 @@
+1).
+
+
+Task 1: Create a new MongoDB database named "PWSKILLS".
+
+use PWSKILLS
+
+Task 2: Create a collection named "Employees" within the "PWSKILLS" database.
+
+db.createCollection("Employees")
+
+
+Task 3: Insert several documents representing employees into the "Employees" collection.
+
+db.Employees.insertMany([
+    { name: "John Doe", age: 28, position: "Software Engineer", department: "IT" },
+    { name: "Jane Smith", age: 34, position: "Project Manager", department: "Operations" },
+    { name: "Sam Brown", age: 25, position: "Data Analyst", department: "Analytics" },
+    { name: "Emily Davis", age: 30, position: "HR Manager", department: "Human Resources" }
+])
+
+Task 4: Retrieve and display all documents from the "Employees" collection.
+
+db.Employees.find().pretty()
+
+
+Task 5: Drop the "Employees" collection.
+
+db.Employees.drop()
+
+Task 6: Drop the "PWSKILLS" database.
+
+db.dropDatabase()
+
+2).
+
+db.Customers.insertOne({
+    name: "Alice Johnson",
+    age: 29,
+    email: "alice.johnson@example.com",
+    phone: "+1234567890",
+    address: {
+        street: "123 Elm St.",
+        city: "Somewhere",
+        state: "XY",
+        postalCode: "12345"
+    },
+    registeredDate: new Date()
+})
+
+3).
+
+db.Customers.find().pretty()
+
+4).
+
+db.Customers.updateOne(
+    { name: "Alice Johnson" },  
+    { $set: {                   
+        "address.street": "456 Oak St.",
+        "address.city": "Anywhere",
+        "address.state": "YZ",
+        "address.postalCode": "67890"
+    }}
+)
+
+5).
+
+db.Customers.find({ totalSpent: { $gt: 500 } }).pretty()
+
+Example scenario:
+{
+    name: "Alice Johnson",
+    totalSpent: 750,
+    email: "alice.johnson@example.com",
+    purchases: [
+        { item: "Laptop", amount: 500 },
+        { item: "Headphones", amount: 250 }
+    ]
+}
+
+
+6).
+
+db.Customers.deleteOne({ name: "Alice Johnson" })
+
+7).
+
+use SchoolDB
+
+8).
+
+db.Students.insertMany([
+    { name: "John Doe", age: 18, grade: "A" },
+    { name: "Jane Smith", age: 17, grade: "B" },
+    { name: "Sam Brown", age: 19, grade: "C" },
+    { name: "Emily Davis", age: 18, grade: "A" }
+])
+
+9).
+
+db.Students.find({
+    $or: [
+        { age: { $gt: 18 } },
+        { grade: "A" }
+    ]
+}).pretty()
+
+10)
+
+db.Students.updateOne(
+    { name: "John Doe" }, // Filter to find the specific student
+    { $set: { grade: "B+" } } // Update operation to set the new grade
+)
+
+11).
+
+db.Teachers.insertMany([
+    { name: "Alice Johnson", subject: "Mathematics", experience: 10 },
+    { name: "Robert Smith", subject: "Physics", experience: 8 },
+    { name: "Emily Davis", subject: "Chemistry", experience: 12 },
+    { name: "John Brown", subject: "English", experience: 5 },
+    { name: "Laura Wilson", subject: "Biology", experience: 7 }
+])
+
+12).
+
+db.Teachers.find({
+    $or: [
+        { subject: "Mathematics" },
+        { experience: { $gt: 8 } }
+    ]
+}).pretty()
+
+
+13).
+
+db.Teachers.updateOne(
+    { name: "Alice Johnson" }, // Filter to find the specific teacher
+    { $set: { experience: 12 } } // Update operation to set the new experience
+)
+
+
+
+
+
+
+
+
+
+
+
