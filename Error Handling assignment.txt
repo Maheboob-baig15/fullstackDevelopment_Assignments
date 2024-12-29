@@ -1,0 +1,117 @@
+1).
+
+// Task 1: Add Product to Cart Function
+const cart = [];
+
+function addToCart(name, price, quantity) {
+    if (!name || name.trim() === "") {
+        throw new Error("Product name is required.");
+    }
+    if (typeof price !== "number" || price <= 0) {
+        throw new Error("Invalid product price.");
+    }
+    if (!Number.isInteger(quantity) || quantity <= 0) {
+        throw new Error("Invalid quantity.");
+    }
+
+    cart.push({ name, price, quantity });
+}
+
+// Task 2: Checkout Function
+function checkout() {
+    if (cart.length === 0) {
+        throw new Error("Cart is empty. Add items before checkout.");
+    }
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    console.log(`Checkout successful! Total amount: $${total}`);
+}
+
+// Example Usage
+try {
+    addToCart("Laptop", 1200, 2); // Valid
+    addToCart("", 30, 1); // Should throw "Product name is required."
+    addToCart("Mouse", -15, 3); // Should throw "Invalid product price."
+    addToCart("Keyboard", 50, "abc"); // Should throw "Invalid quantity."
+    checkout(); // Should throw "Cart is empty." if no valid products are added
+} catch (error) {
+    console.error(error.message);
+}
+
+2).
+
+// Mock database for valid credentials
+const validUsers = [
+    { username: "user123", password: "password123" },
+    { username: "admin", password: "admin123" }
+];
+
+// Login function
+function login(username, password) {
+    if (!username || username.trim() === "") {
+        throw new Error("Username is required.");
+    }
+    if (!password || password.trim() === "") {
+        throw new Error("Password is required.");
+    }
+
+    const userExists = validUsers.some(
+        user => user.username === username && user.password === password
+    );
+
+    if (!userExists) {
+        throw new Error("Invalid username or password.");
+    }
+
+    console.log("Login successful!");
+}
+
+// Example Usage
+try {
+    login("user123", "password123"); // Valid credentials
+    login("", "password456"); // Should throw "Username is required."
+    login("user456", ""); // Should throw "Password is required."
+    login("invalidUser", "invalidPassword"); // Should throw "Invalid username or password."
+} catch (error) {
+    console.error(error.message);
+}
+
+3).
+
+function processPayment(amount, cardNumber, expirationDate) {
+  const currentDate = new Date();
+
+  // Check for invalid payment amount
+  if (typeof amount !== "number" || amount <= 0) {
+    throw new Error("Invalid payment amount.");
+  }
+
+  // Check for invalid card number
+  const cardNumberRegex = /^[0-9]{13,19}$/; // Validates card numbers with 13 to 19 digits
+  if (!cardNumber || !cardNumberRegex.test(cardNumber)) {
+    throw new Error("Invalid card number.");
+  }
+
+  // Check for invalid expiration date
+  const expiration = new Date(expirationDate);
+  if (!expirationDate || expiration.toString() === "Invalid Date" || expiration < currentDate) {
+    throw new Error("Invalid expiration date.");
+  }
+
+  // Simulate payment processing
+  console.log("Payment processed successfully!");
+}
+
+try {
+  // Test the function with valid data
+  processPayment(100, "4111111111111111", "2025-12");
+
+  // Test cases with invalid data
+  processPayment(-50, "4111111111111111", "2025-12"); // Should throw "Invalid payment amount."
+  processPayment(100, "", "2025-12"); // Should throw "Invalid card number."
+  processPayment(100, "4111111111111111", "2020-12"); // Should throw "Invalid expiration date."
+} catch (error) {
+  console.error(error.message);
+}
+
+
+
